@@ -1,111 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#667eea">
+  <meta name="description" content="The page you requested could not be found.">
+  <title>404 – Page Not Found</title>
+
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="404 – Page Not Found">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+
+  <style>
+    :root {
+      --brand: #667eea;
+      --brand-deep: #764ba2;
+      --ink: #333;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-        font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      padding: 2rem 1rem;
     }
 
-    .container-404 {
-        text-align: center;
-        padding: 50px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .wrap {
+      margin: auto;              /* safe centering that never clips on short screens */
+      text-align: center;
+      max-width: 40rem;
     }
 
-    h3 {
-        font-size: 4rem;
-        color: #2196F3;
-        margin: 0;
-        text-shadow: 4px 4px 6px rgba(0,0,0,0.1);
+    .wrap h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 8vw, 3.5rem);
+      color: var(--brand);
+      text-shadow: 4px 4px 6px rgba(0,0,0,.1);
+      line-height: 1.15;
     }
 
-    p {
-        font-size: 2rem;
-        color: #444;
-        margin: 20px 0;
+    .wrap p {
+      font-size: clamp(1.1rem, 4vw, 1.7rem);
+      margin: 1.25rem 0 0;
     }
 
-    .icon {
-        font-size: 10rem;
-        color: #2196F3;
-        margin: 30px 0;
-        animation: float 3s ease-in-out infinite;
+    .icon-404 {
+      position: relative;
+      width: clamp(6rem, 22vw, 10rem);
+      aspect-ratio: 1;
+      margin: 2rem auto 0;
+      display: grid;
+      place-items: center;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
     }
 
-    .icon i {
-        display: inline-block;
+    .icon-404 .fallback {
+      font-size: clamp(3.5rem, 14vw, 6rem);
+      line-height: 1;
+    }
+
+    .icon-404 img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-20px); }
     }
 
-    .link {
-        background: #000;
-        width: 200px;
-        margin:30px auto;
-        padding: 15px 0;
-        border-radius: 8px;
-        animation: anim 1.2s linear infinite;
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      min-width: 200px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(102,126,234,.35);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
 
-    .link a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+    .btn-home:hover,
+    .btn-home:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(102,126,234,.45);
     }
 
-    @keyframes anim {
-        0% { border-top: 3px solid #ff0000; }
-        25% { border-left: 3px solid #ff0000; }
-        50% { border-bottom: 3px solid #ff0000; }
-        75% { border-right: 3px solid #ff0000; }
-        100% { border-top: 3px solid #ff0000; }
+    .btn-home:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
     }
 
-    @media (max-width: 768px) {
-        h1 { font-size: 5rem; }
-        p { font-size: 1.5rem; }
-        .icon { font-size: 6rem; }
-        .link { width: 180px; }
-    }    
-    </style>
+    .btn-home img { width: 1.2rem; height: 1.2rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .icon-404 { animation: none; }
+      .btn-home { transition: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container-404">
-        <h3>404 - Page Not Found</h3>
-        <p>Oops! The page you are looking for does not exist.</p>
-        <div class="icon">
-            <i class="fas fa-question-circle"></i>
-        </div>
+
+  <main class="wrap">
+    <h1>404 – Page Not Found</h1>
+    <p>Oops! The page you are looking for doesn’t exist.</p>
+
+    <div class="icon-404" aria-hidden="true">
+      <span class="fallback">🤔</span>
+      <img src="https://bhupendrawasti.com.np//Media/svg/avatar-thinking.svg" alt=""
+           onload="this.previousElementSibling.hidden = true"
+           onerror="this.remove()">
     </div>
 
-    <footer>
-        <div class="link">
-            <a href="/index"><i class="fas fa-home"></i> Back to Home</a>
-        </div>
-    </footer>
+    <a class="btn-home" href="https://bhupendrawasti.com.np/">
+      <img src="https://bhupendrawasti.com.np/Media/svg/white/home.svg" alt="" aria-hidden="true"
+           onerror="this.remove()">
+      Back to Home
+    </a>
+  </main>
+
 </body>
 </html>
